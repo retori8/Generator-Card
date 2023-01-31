@@ -28,19 +28,46 @@ function render(variables = {}) {
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
-
+  let name = variables.name;
+  if (name == null) name = "Name";
+  let lastname = variables.lastname;
+  if (lastname == null) lastname = "Lastname";
+  let socialMediaPosition = variables.socialMediaPosition;
+  if (socialMediaPosition == null) socialMediaPosition = "position-right";
+  let city = variables.city;
+  if (city == null) city = "Miami";
+  let country = variables.country;
+  if (country == null) country = "USA";
+  let role = variables.role;
+  if (role == null) role = "Web Developer";
+  let twitter = "";
+  if (variables.twitter !== null)
+    twitter = "https://twitter.com/" + variables.twitter;
+  else twitter = "https://twitter.com/4GeeksAcademy";
+  let github = "";
+  if (variables.github !== null)
+    github = "https://https://github.com/" + variables.github;
+  else github = "https://https://github.com/4GeeksAcademy";
+  let linkedin = "";
+  if (variables.linkedin !== null)
+    linkedin = "https://linkedin.com/" + variables.linkedin;
+  else linkedin = "https://linkedin.com/4geeksacademy";
+  let instagram = "";
+  if (variables.instagram !== null)
+    instagram = "https://instagram.com/" + variables.instagram;
+  else instagram = "https://instagram.com/4geeksacademy";
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1>${name} ${lastname}</h1>
+          <h2>${role}</h2>
+          <h3>${city}, ${country}</h3>
+          <ul class="${variables.socialMediaPosition}">
+            <li><a href="${twitter}"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="${github}"><i class="fab fa-github"></i></a></li>
+            <li><a href="${linkedin}"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="${instagram}"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
